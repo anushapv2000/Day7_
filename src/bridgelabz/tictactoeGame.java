@@ -1,5 +1,6 @@
 package bridgelabz;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class tictactoeGame {
@@ -8,19 +9,36 @@ public class tictactoeGame {
     public static void main(String[] args)
     {
         ch=assignvalue();
-        System.out.println("Player 1");
-        char x=choose();
-        System.out.println("Player1 chose="+x);
-        System.out.println("Player 2");
-        char y=choose();
-        System.out.println("Player2 chose="+y);
-        showBoard(ch);
-        System.out.println("Player 1 choose index");
-        int idx=checkcell(ch);
-        checkfreespace(ch,x,idx);
-        System.out.println("Player 2 choose index");
-        idx=checkcell(ch);
-        checkfreespace(ch,x,idx);
+       if(toss()=="heads") {
+           System.out.println("Player 1 starts");
+           char x = choose();
+           System.out.println("Player1 chose=" + x);
+           System.out.println("Player 2");
+           char y = choose();
+           System.out.println("Player2 chose=" + y);
+           showBoard(ch);
+           System.out.println("Player 1 choose index");
+           int idx = checkcell(ch);
+           checkfreespace(ch, x, idx);
+           System.out.println("Player 2 choose index");
+           idx = checkcell(ch);
+           checkfreespace(ch, y, idx);
+       }
+       else {
+           System.out.println("Player 2 starts");
+           char y = choose();
+           System.out.println("Player1 chose=" + y);
+           System.out.println("Player 2");
+           char x = choose();
+           System.out.println("Player2 chose=" + x);
+           showBoard(ch);
+           System.out.println("Player 2 choose index");
+           int idx = checkcell(ch);
+           checkfreespace(ch, y, idx);
+           System.out.println("Player 1 choose index");
+           idx = checkcell(ch);
+           checkfreespace(ch, x, idx);
+       }
     }
     public static char[] assignvalue(){
 
@@ -61,5 +79,12 @@ public class tictactoeGame {
             ch[idx]=val;
         }
 
+    }
+    public static String  toss(){
+        String t[]={"heads","tails"};
+
+        Random r=new Random();
+        int v=r.nextInt(2);
+        return t[v];
     }
 }
