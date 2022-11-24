@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 public class tictactoeGame {
     static Scanner sc =new Scanner(System.in);
+    static char ch[]=new char[10];
     public static void main(String[] args)
     {
-        char ch[]=assignvalue();
+        ch=assignvalue();
         System.out.println("Player 1");
         char x=choose();
         System.out.println("Player1 chose="+x);
@@ -14,9 +15,13 @@ public class tictactoeGame {
         char y=choose();
         System.out.println("Player2 chose="+y);
         showBoard(ch);
+        System.out.println("Player 1 choose index");
+        int idx=checkcell(ch);
+        System.out.println("Player 2 choose index");
+        idx=checkcell(ch);
     }
     public static char[] assignvalue(){
-        char ch[]=new char[10];
+
         for(int i=1;i<ch.length;i++){
             ch[i]='\0';
         }
@@ -35,5 +40,14 @@ public class tictactoeGame {
         for (int i : ch) {
             System.out.println(i);
         }
+    }
+    public static int checkcell(char ch[]){
+        System.out.println("Enter the index");
+        int idx=sc.nextInt();
+        if(ch[idx]=='\0'){
+            return idx;
+        }
+        return 0;
+        //return ch;
     }
 }
