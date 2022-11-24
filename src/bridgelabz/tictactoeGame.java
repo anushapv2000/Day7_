@@ -13,6 +13,7 @@ public class tictactoeGame {
         System.out.println("Player 2");
         char y=choose();
         System.out.println("Player2 chose="+y);
+        showBoard(ch);
     }
     public static char[] assignvalue(){
         char ch[]=new char[10];
@@ -28,5 +29,11 @@ public class tictactoeGame {
         System.out.println("Enter the input X or O");
         char val=sc.next().charAt(0);
         return val;
+    }
+    public static void showBoard(char ch[]) {
+        System.out.println("before choosing");
+        for (int i : ch) {
+            System.out.println(i);
+        }
     }
 }
