@@ -17,8 +17,10 @@ public class tictactoeGame {
         showBoard(ch);
         System.out.println("Player 1 choose index");
         int idx=checkcell(ch);
+        checkfreespace(ch,x,idx);
         System.out.println("Player 2 choose index");
         idx=checkcell(ch);
+        checkfreespace(ch,x,idx);
     }
     public static char[] assignvalue(){
 
@@ -49,5 +51,15 @@ public class tictactoeGame {
         }
         return 0;
         //return ch;
+    }
+    public static void checkfreespace(char ch[],char val,int idx){
+        if(idx==0)
+        {
+            System.out.println("Cannot make the move,index occupied");;
+        }
+        else{
+            ch[idx]=val;
+        }
+
     }
 }
