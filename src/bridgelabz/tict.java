@@ -1,13 +1,15 @@
 package bridgelabz;
 
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class tict {
     static int position=0;
+    static char ch[]=new char[10];
     static Scanner sc =new Scanner(System.in);
     public static void main(String[] args)
     {
-        char ch[]=assign();
+        ch=assign();
         System.out.println("Player 1");
         char x=choose();
         System.out.println("Player1 chose="+x);
@@ -16,12 +18,14 @@ public class tict {
         System.out.println("Player2 chose="+y);
         showBoard(ch);
         System.out.println("Player 1 choose index");
-         ch=addvaluetocell(ch,x);
+         int idx=addvaluetocell(ch);
+         checkfreespace(ch,x,idx);
         System.out.println("Player 2 choose index");
-        ch=addvaluetocell(ch,y);
+        idx=addvaluetocell(ch);
+        checkfreespace(ch,x,idx);
     }
     public static char[] assign(){
-        char ch[]=new char[10];
+
         for(int i=1;i<ch.length;i++){
             ch[i]='\0';
         }
@@ -41,13 +45,23 @@ public class tict {
             System.out.println(i);
         }
     }
-    public static char[] addvaluetocell(char ch[],char val){
+    public static int addvaluetocell(char ch[]){
         System.out.println("Enter the index");
         int idx=sc.nextInt();
         if(ch[idx]=='\0'){
-                ch[idx]=val;
+            return idx;
             }
-        return ch;
+        return 0;
+        //return ch;
+    }
+    public static void checkfreespace(char ch[],char val,int idx){
+        if(idx==0)
+        {
+            System.out.println("Cannot make the move,index occupied");;
+        }
+        else{
+            ch[idx]=val;
+        }
 
     }
 
